@@ -1,0 +1,13 @@
+version: '3.0'
+
+services:
+    sse-service:
+        build: ./sse-service
+        env_file:
+            - ./sse-service/.env
+        ports:
+            - "8081:8081"
+networks:
+    default:
+        external:
+            name: red-net-network

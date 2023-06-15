@@ -2,12 +2,14 @@ version: '3.0'
 
 services:
     sse-service:
+        container_name: red-net-sse-service
         build: ./sse-service
         env_file:
             - ./sse-service/.env
         ports:
             - "8081:8081"
+        networks:
+            - red-net-network
 networks:
-    default:
-        external:
-            name: red-net-network
+    red-net-network:
+        external: true

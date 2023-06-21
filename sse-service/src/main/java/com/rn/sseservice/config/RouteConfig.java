@@ -23,7 +23,7 @@ public class RouteConfig {
 
     @Bean
     public RouterFunction<ServerResponse> routes(){
-        return route(GET(SSE_SERVICE_PATH + "/subscribe"),sseService::subscribe)
+        return route(POST(SSE_SERVICE_PATH + "/subscribe"),sseService::subscribe)
             .andRoute(POST(SSE_SERVICE_PATH + "/notify-all-users"),sseService::notifyAllUsers);
     }
 }

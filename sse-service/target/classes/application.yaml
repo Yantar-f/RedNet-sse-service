@@ -7,4 +7,5 @@ RedNet:
     app:
         accessTokenCookieName: rednet-jwt-access
         jwt:
+            allowedClockSkewSeconds: 15
             secretKey: ${AUTH_JWT_SECRET_KEY}

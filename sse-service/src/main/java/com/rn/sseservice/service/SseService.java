@@ -30,10 +30,12 @@ public class SseService {
 
     public SseService(
         @Value ("${RedNet.app.accessTokenCookieName}") String accessTokenCookieName,
+        @Value ("${RedNet.app.jwt.allowedClockSkewSeconds}") Long allowedClockSkewSeconds,
         @Value ("${RedNet.app.jwt.secretKey}") String jwtSecretKey
     ) {
         this.accessTokenCookieName = accessTokenCookieName;
         this.jwtParser = Jwts.parserBuilder()
+            .setAllowedClockSkewSeconds(allowedClockSkewSeconds)
             .setSigningKey(Keys.hmacShaKeyFor(Decoders.BASE64.decode(jwtSecretKey)))
             .build();
     }
